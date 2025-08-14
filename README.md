@@ -46,12 +46,32 @@ npm run format  # Prettier format
 - Prettier (enforced via VSCode settings)
 - Husky + lint-staged (runs on pre-commit)
 
-## Project Structure (planned)
+## Project Structure
 
 - `src/app` – Next.js app router routes
+  - `/` – Main landing page
+  - `/test-api` – API testing interface for development
 - `src/components` – UI components (ShadCN + Tailwind)
 - `src/lib` – shared utilities, configs
 - `src/types` – TypeScript definitions
+
+## Testing
+
+### API Test Page
+
+The application includes a comprehensive API testing interface at `/test-api` that allows developers to:
+
+- Test database connectivity
+- Perform CRUD operations on test data
+- Monitor API health status
+- Verify data flow between frontend and backend
+
+**Prerequisites**: Ensure both servers are running:
+
+- API Server: `http://localhost:3000` (club-link-api)
+- Web Server: `http://localhost:3001` (club-link-web)
+
+See `API_TEST_README.md` for detailed testing instructions.
 
 ## Environment Variables
 
