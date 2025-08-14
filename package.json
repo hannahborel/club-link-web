@@ -4,7 +4,7 @@
   "description": "A web application to manage and grow the club link network",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext .js,.ts,.tsx,.jsx",
+    "lint": "eslint .",
     "format": "prettier --write .",
     "prepare": "husky"
   },
