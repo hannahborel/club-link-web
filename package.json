@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/hannahborel/club-link-web#readme",
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.12",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
     "dotenv": "^17.2.1",
