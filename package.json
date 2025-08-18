@@ -6,12 +6,9 @@
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write .",
-    "prepare": "husky",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "setup:env": "./scripts/setup-env.sh",
-    "validate:env": "node scripts/validate-env.js"
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -24,14 +21,10 @@
     "url": "https://github.com/hannahborel/club-link-web/issues"
   },
   "homepage": "https://github.com/hannahborel/club-link-web#readme",
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md,mdx,css,scss}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.12",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.10",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
     "autoprefixer": "^10.4.21",
@@ -41,15 +34,12 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^16.3.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.1.5",
-    "postcss": "^8.5.6",
     "prettier": "^3.6.2",
-    "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2"
   },
   "dependencies": {
     "next": "^14.2.31",
+    "postcss": "^8.5.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }

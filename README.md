@@ -115,6 +115,229 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 - `.env.development` - Development defaults (safe to commit)
 - `.env.production` - Production template (never commit)
 
+## 🚀 Deployment
+
+### Prerequisites
+
+1. **Vercel Account**: Sign up at [vercel.com](https://vercel.com)
+2. **Vercel CLI**: Install globally with `npm i -g vercel`
+3. **Git Repository**: Ensure your code is pushed to GitHub
+4. **Environment Variables**: Set up all required environment variables
+
+### Environment Setup
+
+#### 1. Copy Environment Template
+
+```bash
+cp env.example .env.local
+```
+
+#### 2. Configure Environment Variables
+
+Edit `.env.local` with your actual values:
+
+- **Database**: Set your PostgreSQL connection string
+- **Clerk**: Add your Clerk authentication keys
+- **Stripe**: Configure payment processing keys
+- **API**: Set the API base URL
+
+#### 3. Required Environment Variables
+
+```bash
+# Application
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_NAME="Club Link"
+
+# Database
+DATABASE_URL="postgresql://username:password@localhost:5432/club_link"
+
+# Authentication (Clerk)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_key
+CLERK_SECRET_KEY=sk_test_your_key
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/auth/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/auth/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
+
+# API Configuration
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
+API_BASE_URL=http://localhost:3001
+
+# Stripe (for payments)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_key
+STRIPE_SECRET_KEY=sk_test_your_key
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
+```
+
+### Development Deployment
+
+#### 1. Quick Deploy
+
+```bash
+# Deploy to development environment
+./scripts/deploy.sh dev
+```
+
+#### 2. Manual Deploy
+
+```bash
+# Install dependencies
+npm install
+
+# Run linting
+npm run lint
+
+# Build application
+npm run build
+
+# Deploy to Vercel
+vercel
+```
+
+#### 3. Development URL
+
+After deployment, you'll get a development URL like:
+`https://club-link-web-git-dev-username.vercel.app`
+
+### Production Deployment
+
+#### 1. Production Deploy
+
+```bash
+# Deploy to production
+./scripts/deploy.sh prod
+```
+
+#### 2. Manual Production Deploy
+
+```bash
+# Install dependencies
+npm install
+
+# Run linting
+npm run lint
+
+# Build application
+npm run build
+
+# Deploy to production
+vercel --prod
+```
+
+#### 3. Production URL
+
+Your production app will be available at:
+`https://your-project-name.vercel.app`
+
+### Vercel Configuration
+
+The `vercel.json` file configures:
+
+- **Build Commands**: `npm run build`
+- **Output Directory**: `.next`
+- **Framework**: Next.js
+- **Security Headers**: XSS protection, content type options
+- **Function Timeouts**: 30 seconds for API routes
+
+### Environment Variables in Vercel
+
+#### 1. Via Vercel Dashboard
+
+1. Go to your project in Vercel
+2. Navigate to Settings → Environment Variables
+3. Add each environment variable
+4. Select the appropriate environment (Production, Preview, Development)
+
+#### 2. Via Vercel CLI
+
+```bash
+# Set production environment variable
+vercel env add DATABASE_URL production
+
+# Set preview environment variable
+vercel env add DATABASE_URL preview
+```
+
+### Database Configuration
+
+#### 1. Development
+
+Use local PostgreSQL or Neon development database:
+
+```bash
+DATABASE_URL="postgresql://username:password@localhost:5432/club_link"
+```
+
+#### 2. Production
+
+Use Neon production database or Vercel Postgres:
+
+```bash
+DATABASE_URL="postgresql://username:password@production-host:5432/club_link"
+```
+
+### Monitoring & Analytics
+
+#### 1. Vercel Analytics
+
+- View deployment status
+- Monitor performance metrics
+- Check function execution logs
+
+#### 2. Error Tracking
+
+- Monitor API errors
+- Track build failures
+- View function timeouts
+
+### Troubleshooting
+
+#### Common Issues
+
+1. **Build Failures**
+   - Check environment variables
+   - Verify database connectivity
+   - Review build logs
+
+2. **Environment Variable Issues**
+   - Ensure variables are set in Vercel
+   - Check variable names match exactly
+   - Verify environment scope
+
+3. **Database Connection Issues**
+   - Check DATABASE_URL format
+   - Verify database is accessible
+   - Check firewall settings
+
+#### Debug Commands
+
+```bash
+# Check Vercel status
+vercel ls
+
+# View deployment logs
+vercel logs
+
+# Check environment variables
+vercel env ls
+```
+
+### Security Considerations
+
+- All environment variables are encrypted in Vercel
+- Security headers are automatically applied
+- HTTPS is enforced for all deployments
+- API routes have timeout limits
+
+### Next Steps
+
+After successful deployment:
+
+1. **Test Functionality**: Verify all features work in production
+2. **Monitor Performance**: Check Vercel analytics
+3. **Set Up Domains**: Configure custom domains if needed
+4. **Enable Monitoring**: Set up error tracking and alerts
+
 ## 🧪 API Testing
 
 The application includes a comprehensive API testing interface at `/test-api` for development and testing.
@@ -223,19 +446,6 @@ docs(api): update API documentation
 - **Husky + lint-staged**: Pre-commit hooks
 - **TypeScript**: Strict mode with full type safety
 
-## 🚀 Deployment
-
-### Environment-Specific Deployment
-
-- **`develop` branch** → Development environment
-- **`main` branch** → Production environment
-
-### Vercel Deployment
-
-- Environment variables set in Vercel dashboard
-- Automatic deployments on branch pushes
-- Preview deployments for feature branches
-
 ## 🔒 Security Best Practices
 
 - Never commit secrets to git
@@ -289,3 +499,4 @@ After successful testing:
 - [ShadCN UI Components](https://ui.shadcn.com/)
 - [Clerk Documentation](https://clerk.com/docs)
 - [Stripe Documentation](https://stripe.com/docs)
+- [Vercel Documentation](https://vercel.com/docs)
