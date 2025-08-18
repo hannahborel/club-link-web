@@ -8,9 +8,7 @@
     "format": "prettier --write .",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "setup:env": "./scripts/setup-env.sh",
-    "validate:env": "node scripts/validate-env.js"
+    "start": "next start"
   },
   "repository": {
     "type": "git",
