@@ -13,7 +13,7 @@ export default function HomePage() {
             Test API Connection
           </a>
 
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-grey -500">
             <p>API Server: http://localhost:3000</p>
             <p>Web Server: http://localhost:3001</p>
           </div>
